@@ -19,7 +19,7 @@ const Body = () => {
     setAllRes(json?.data?.cards[2]?.data?.data?.cards);
   }
 
-  if(filteredmylist?.length===0) return <h1>No Restaurant Matches Your Search</h1>
+//   if(filteredmylist?.length===0) return <h1>No Restaurant Matches Your Search</h1>
   return allRes?.length === 0 ? (<Shimmer/>):(
     <div>
       <div className="search">
