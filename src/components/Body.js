@@ -3,6 +3,7 @@ import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [allRes, setAllRes] = useState([]);
@@ -19,6 +20,10 @@ const Body = () => {
     const json = await data.json();
     setFilteredMylist(json?.data?.cards[2]?.data?.data?.cards);
     setAllRes(json?.data?.cards[2]?.data?.data?.cards);
+  }
+  const isOnline=useOnline();
+  if(!isOnline){
+    return <h1>Offline , Please check network.!!!</h1>
   }
 
   //   if(filteredmylist?.length===0) return <h1>No Restaurant Matches Your Search</h1>
