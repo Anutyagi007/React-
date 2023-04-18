@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./components/About";
+// import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
 // import Shopping from "./components/Shopping";
+const About=lazy(()=>import("./components/About"))
 const Shopping = lazy(() => import("./components/Shopping"));
 
 const AppLayout = () => {
@@ -50,7 +52,7 @@ const AppRouter = createBrowserRouter([
       {
         path: "/shopping",
         element: (
-          <Suspense>
+          <Suspense fallback={<Shimmer/>}> 
             <Shopping />
           </Suspense>
         ),
