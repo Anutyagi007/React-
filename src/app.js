@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,15 +9,24 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 // import Shopping from "./components/Shopping";
-const About=lazy(()=>import("./components/About"))
+const About = lazy(() => import("./components/About"));
 const Shopping = lazy(() => import("./components/Shopping"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Namaste",
+    email: "namaste@gmail.com",
+  });
+
   return (
     <>
-      <Header />
-      <Outlet />
+      {/* UserContext provider is to override the default value */}
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Header />
+        <Outlet />
+      </UserContext.Provider>
     </>
   );
 };
@@ -29,7 +38,11 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: (
+          <Suspense>
+            <Body />
+          </Suspense>
+        ),
       },
       {
         path: "/about",
@@ -52,7 +65,7 @@ const AppRouter = createBrowserRouter([
       {
         path: "/shopping",
         element: (
-          <Suspense fallback={<Shimmer/>}> 
+          <Suspense fallback={<Shimmer />}>
             <Shopping />
           </Suspense>
         ),

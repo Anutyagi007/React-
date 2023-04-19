@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const LoggedInUser = () => {
   return false;
 };
 const Header = () => {
   const [isLogged, setIsLogged] = useState(LoggedInUser);
+  const {user}=useContext(UserContext);
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg" >
       <div className="logo-container">
@@ -29,11 +31,12 @@ const Header = () => {
           <li>cart</li>
         </ul>
       </div>
+      {user.name +" "+user.email}
       <div className="py-8">
         {isLogged ? (
-          <button onClick={() => setIsLogged(false)} className="bg-pink-300 h-10 rounded-lg mr-5">Logout</button>
+          <button onClick={() => setIsLogged(false)} className="bg-pink-300 h-10 rounded-lg mr-5 text-white w-16">Logout</button>
         ) : (
-          <button onClick={() => setIsLogged(true)} className="bg-pink-300 h-10 rounded-lg mr-5">Login</button>
+          <button onClick={() => setIsLogged(true)} className="bg-pink-300 h-10 rounded-lg mr-5 text-white w-16">Login</button>
         )}
       </div>
     </div>

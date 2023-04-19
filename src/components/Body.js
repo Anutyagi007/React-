@@ -1,14 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [allRes, setAllRes] = useState([]);
   const [filteredmylist, setFilteredMylist] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const {user , setUser}=useContext(UserContext);
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -55,6 +57,7 @@ const Body = () => {
         >
           Search
         </button>
+        {/* <input value={user.name} onChange={e=>setUser({name:e.target.value,email:"newemail@gmail.com"})}/> */}
         </div>
         <div className="filter">
         <button
