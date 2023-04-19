@@ -16,17 +16,15 @@ const Shopping = lazy(() => import("./components/Shopping"));
 
 const AppLayout = () => {
   const [user, setUser] = useState({
-    name: "Namaste",
-    email: "namaste@gmail.com",
+    name: "Anubhav",
+    email: "Anubhav@gmail.com",
   });
 
   return (
-    <>
       <UserContext.Provider value={{ user: user, setUser: setUser }}>
         <Header />
         <Outlet />
       </UserContext.Provider>
-    </>
   );
 };
 const AppRouter = createBrowserRouter([

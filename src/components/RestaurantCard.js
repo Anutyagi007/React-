@@ -19,7 +19,6 @@ const RestaurantCard=(props)=>{
               <h4>{costForTwoString}</h4>
               <h4>Delivery Time:- {deliveryTime} mins</h4>
               <h4>{avgRating}stars</h4>
-              <h5>{user.name}-{user.email}</h5>
           </div>
       );
   }
