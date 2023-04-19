@@ -22,7 +22,6 @@ const AppLayout = () => {
 
   return (
     <>
-      {/* UserContext provider is to override the default value */}
       <UserContext.Provider value={{ user: user, setUser: setUser }}>
         <Header />
         <Outlet />
