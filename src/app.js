@@ -10,6 +10,8 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 // import Shopping from "./components/Shopping";
 const About = lazy(() => import("./components/About"));
 const Shopping = lazy(() => import("./components/Shopping"));
@@ -21,10 +23,12 @@ const AppLayout = () => {
   });
 
   return (
+    <Provider store={store}>
       <UserContext.Provider value={{ user: user, setUser: setUser }}>
         <Header />
         <Outlet />
       </UserContext.Provider>
+    </Provider>
   );
 };
 const AppRouter = createBrowserRouter([

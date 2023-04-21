@@ -29,6 +29,18 @@ const RestaurantMenu = () => {
         <h3>{res.avgRating} Stars</h3>
         <p>{res.cuisines}</p>
       </div>
+      <h1>Menu</h1>
+      <ul>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+        <li>Paneer Masala</li>
+      </ul>
     </div>
   );
 };

@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+import CartSlice from "../utils/CartSlice";
+import store from "../utils/store";
 
 const LoggedInUser = () => {
   return false;
@@ -9,6 +12,7 @@ const LoggedInUser = () => {
 const Header = () => {
   const [isLogged, setIsLogged] = useState(LoggedInUser);
   const {user}=useContext(UserContext);
+  const cartItems=useSelector((store)=>store.cart.items)
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg" >
       <div className="logo-container">
@@ -28,10 +32,10 @@ const Header = () => {
           <li className="px-2">
             <Link to="/shopping">Shopping</Link>
           </li>
-          <li>cart</li>
+          <li>cart-{cartItems.length} items</li>
         </ul>
       </div>
-      {user.name +" "+user.email}
+      {user.name}
       <div className="py-8">
         {isLogged ? (
           <button onClick={() => setIsLogged(false)} className="bg-pink-300 h-10 rounded-lg mr-5 text-white w-16">Logout</button>
